@@ -13,3 +13,4 @@ export * from './downloads/download-blob';
 export * from './downloads/download-file-attachment';
 export * from './events/generic-events';
 export * from './ui/carousel';
+export * from './ui/spacer';
