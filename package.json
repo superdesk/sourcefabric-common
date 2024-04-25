@@ -14,6 +14,7 @@
     },
     "scripts": {
         "build": "tsc && ts-node bundle-css.ts",
+        "prepublishOnly": "npm run build",
         "lint": "python3 grep-lint.py && npx prettier --check .",
         "watch": "tsc --watch",
         "watch-css": "ts-node bundle-css.ts --watch",
