@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ResizeObserverComponent} from './resize-observer';
+import {IDimensions, ResizeObserverComponent} from './resize-observer';
 import type {Meta, StoryObj} from '@storybook/react';
 
 const meta: Meta<typeof ResizeObserverComponent> = {
@@ -23,7 +23,7 @@ const style: React.CSSProperties = {
     alignItems: 'center',
 };
 
-const children = (dimensions) => (
+const children: (dimensions: IDimensions) => JSX.Element = (dimensions) => (
     <div style={style}>
         <span>{dimensions.width}</span>
     </div>
