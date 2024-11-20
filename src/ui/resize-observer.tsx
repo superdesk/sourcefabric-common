@@ -5,7 +5,7 @@ export interface IDimensions {
 }
 
 interface IProps {
-    children: (props: IDimensions) => JSX.Element;
+    children: (props: IDimensions) => React.ReactNode;
 }
 
 interface IState {

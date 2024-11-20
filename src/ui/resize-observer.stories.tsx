@@ -3,7 +3,7 @@ import {IDimensions, ResizeObserverComponent} from './resize-observer';
 import type {Meta, StoryObj} from '@storybook/react';
 
 const meta: Meta<typeof ResizeObserverComponent> = {
-    title: 'Components/ResizeObserverComponent',
+    title: 'HOC/ResizeObserverComponent',
     component: ResizeObserverComponent,
 };
 
@@ -23,7 +23,7 @@ const style: React.CSSProperties = {
     alignItems: 'center',
 };
 
-const children: (dimensions: IDimensions) => JSX.Element = (dimensions) => (
+const children: (dimensions: IDimensions) => React.ReactNode = (dimensions) => (
     <div style={style}>
         <span>{dimensions.width}</span>
     </div>
