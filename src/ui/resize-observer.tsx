@@ -12,7 +12,7 @@ interface IState {
     dimensions: IDimensions;
 }
 
-export class ResizeObserverComponent extends React.PureComponent<IProps, IState> {
+export class WithResizeObserver extends React.PureComponent<IProps, IState> {
     private el: HTMLDivElement | null | undefined;
     private observerInstance: ResizeObserver | null;
 

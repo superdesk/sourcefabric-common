@@ -1,15 +1,15 @@
 import * as React from 'react';
-import {IDimensions, ResizeObserverComponent} from './resize-observer';
+import {IDimensions, WithResizeObserver} from './resize-observer';
 import type {Meta, StoryObj} from '@storybook/react';
 
-const meta: Meta<typeof ResizeObserverComponent> = {
-    title: 'HOC/ResizeObserverComponent',
-    component: ResizeObserverComponent,
+const meta: Meta<typeof WithResizeObserver> = {
+    title: 'HOC/WithResizeObserver',
+    component: WithResizeObserver,
 };
 
 export default meta;
 
-type Story = StoryObj<typeof ResizeObserverComponent>;
+type Story = StoryObj<typeof WithResizeObserver>;
 
 const style: React.CSSProperties = {
     border: '1px solid red',
@@ -32,5 +32,5 @@ const children: (dimensions: IDimensions) => React.ReactNode = (dimensions) => (
 export const Main: Story = {
     args: {
         children: children,
-    } satisfies React.ComponentProps<typeof ResizeObserverComponent>,
+    } satisfies React.ComponentProps<typeof WithResizeObserver>,
 };
