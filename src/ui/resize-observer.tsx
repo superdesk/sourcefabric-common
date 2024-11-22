@@ -9,19 +9,21 @@ interface IProps {
 }
 
 interface IState {
-    dimensions: IDimensions | 'not-initialized';
+    dimensions: IDimensions;
 }
 
 export class ResizeObserverComponent extends React.PureComponent<IProps, IState> {
-    el: HTMLDivElement | null | undefined;
-    observerInstance: any;
+    private el: HTMLDivElement | null | undefined;
+    private observerInstance: ResizeObserver | null;
 
     constructor(props: IProps) {
         super(props);
 
         this.state = {
-            dimensions: 'not-initialized',
+            dimensions: {width: 0},
         };
+
+        this.observerInstance = null;
     }
 
     componentDidMount() {
@@ -33,23 +35,30 @@ export class ResizeObserverComponent extends React.PureComponent<IProps, IState>
             });
         });
 
+        if (this.el == null) {
+            throw new Error('can not be null');
+        }
+
         this.observerInstance.observe(this.el);
     }
 
     componentWillUnmount() {
+        if (this.el == null || this.observerInstance == null) {
+            throw new Error('can not be null');
+        }
+
         this.observerInstance.unobserve(this.el);
     }
 
     render() {
         const {dimensions} = this.state;
-
         return (
             <div
                 ref={(el) => {
                     this.el = el;
                 }}
             >
-                {dimensions === 'not-initialized' ? null : this.props.children(dimensions)}
+                {this.props.children(dimensions)}
             </div>
         );
     }
