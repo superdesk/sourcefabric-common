@@ -6,6 +6,7 @@ export * from './ui/show-modal';
 export * from './ui/with-sortable';
 export * from './utils/index';
 export * from './utils/array-spin';
+export * from './utils/get-human-readable-file-size';
 export * from './utils/classnames';
 export * from './input/with-validation';
 export * from './localization/get-weekday-names';
