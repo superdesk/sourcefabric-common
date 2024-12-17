@@ -1,16 +1,16 @@
 import * as React from 'react';
 
-export interface IDimensions {
+export interface IScreenSizeObserverDimensions {
     width: number;
     height: number;
 }
 
 interface IProps {
-    children: (props: IDimensions) => React.ReactNode;
+    children: (props: IScreenSizeObserverDimensions) => React.ReactNode;
 }
 
 interface IState {
-    dimensions: IDimensions;
+    dimensions: IScreenSizeObserverDimensions;
 }
 
 export class WithScreenSizeObserver extends React.PureComponent<IProps, IState> {

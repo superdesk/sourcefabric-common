@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-export interface IDimensions {
+export interface IResizeObserverDimensions {
     width: number;
 }
 
 interface IProps {
-    children: (props: IDimensions) => React.ReactNode;
+    children: (props: IResizeObserverDimensions) => React.ReactNode;
 }
 
 interface IState {
-    dimensions: IDimensions;
+    dimensions: IResizeObserverDimensions;
 }
 
 export class WithResizeObserver extends React.PureComponent<IProps, IState> {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {IDimensions, WithResizeObserver} from './resize-observer';
+import {IResizeObserverDimensions, WithResizeObserver} from './resize-observer';
 import type {Meta, StoryObj} from '@storybook/react';
 
 const meta: Meta<typeof WithResizeObserver> = {
@@ -23,7 +23,7 @@ const style: React.CSSProperties = {
     alignItems: 'center',
 };
 
-const children: (dimensions: IDimensions) => React.ReactNode = (dimensions) => (
+const children: (dimensions: IResizeObserverDimensions) => React.ReactNode = (dimensions) => (
     <div style={style}>
         <span>{dimensions.width}</span>
     </div>
