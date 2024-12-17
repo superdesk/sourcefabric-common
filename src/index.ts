@@ -16,3 +16,4 @@ export * from './events/generic-events';
 export * from './ui/carousel';
 export * from './ui/spacer';
 export * from './ui/resize-observer';
+export * from './ui/screen-size-observer';
