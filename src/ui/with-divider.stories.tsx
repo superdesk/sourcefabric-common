@@ -39,7 +39,25 @@ export const Main: Story = {
         },
     },
     args: {
-        divider: <div style={{width: 100, height: 1, background: 'red'}} />,
-        children: [<div>line 1</div>, <div>line 2</div>, <div>line 3</div>],
+        divider: <div style={{width: 100, height: 1, background: 'red', marginBlock: 5}} />,
+        children: [
+            <div>one</div>,
+            <div>two</div>,
+            <div>three</div>
+        ],
     } satisfies React.ComponentProps<typeof WithDivider>,
+};
+
+export const Horizontal: Story = {
+    render: () => {
+        return (
+            <div style={{display: 'flex', flexDirection: 'row'}}>
+                <WithDivider divider={<div style={{width: 1, height: 20, background: 'red', marginInline: 10}} />}>
+                    <div>one</div>
+                    <div>two</div>
+                    <div>three</div>
+                </WithDivider>
+            </div>
+        );
+    },
 };
