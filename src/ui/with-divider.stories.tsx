@@ -40,11 +40,7 @@ export const Main: Story = {
     },
     args: {
         divider: <div style={{width: 100, height: 1, background: 'red', marginBlock: 5}} />,
-        children: [
-            <div>one</div>,
-            <div>two</div>,
-            <div>three</div>
-        ],
+        children: [<div>one</div>, <div>two</div>, <div>three</div>],
     } satisfies React.ComponentProps<typeof WithDivider>,
 };
 
