@@ -81,3 +81,15 @@ export class SpacerBlock extends React.PureComponent<IPropsSpacerBlock> {
         );
     }
 }
+
+export function isSpacerTreeEmpty(result: JSX.Element | Array<JSX.Element> | false): boolean {
+    if (Array.isArray(result)) {
+        return React.Children.toArray(result).every((child) => isSpacerTreeEmpty(child));
+    } else if (result == null || result == false) {
+        return true;
+    } else if (result?.type?.displayName === 'Spacer' || result?.type?.name === 'Spacer') {
+        return React.Children.toArray(result.props.children).every((child) => isSpacerTreeEmpty(child));
+    } else {
+        return false;
+    }
+}
