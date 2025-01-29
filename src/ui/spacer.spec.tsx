@@ -5,7 +5,7 @@ import {isSpacerTreeEmpty, Spacer} from './spacer';
 
 describe('isSpacerTreeEmpty', () => {
     it('detects empty', () => {
-        const wrapper = (
+        const result = (
             <Spacer v gap="4">
                 {null}
 
@@ -18,11 +18,11 @@ describe('isSpacerTreeEmpty', () => {
             </Spacer>
         );
 
-        assert.equal(isSpacerTreeEmpty(wrapper), true);
+        assert.equal(isSpacerTreeEmpty(result), true);
     });
 
     it('detects non-empty', () => {
-        const wrapper = (
+        const result = (
             <Spacer v gap="4">
                 {null}
 
@@ -30,11 +30,11 @@ describe('isSpacerTreeEmpty', () => {
             </Spacer>
         );
 
-        assert.equal(isSpacerTreeEmpty(wrapper), false);
+        assert.equal(isSpacerTreeEmpty(result), false);
     });
 
     it('detects non-empty deep', () => {
-        const wrapper = (
+        const result = (
             <Spacer v gap="4">
                 {null}
 
@@ -46,6 +46,6 @@ describe('isSpacerTreeEmpty', () => {
             </Spacer>
         );
 
-        assert.equal(isSpacerTreeEmpty(wrapper), false);
+        assert.equal(isSpacerTreeEmpty(result), false);
     });
 });
