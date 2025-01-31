@@ -18,3 +18,4 @@ export * from './ui/spacer';
 export * from './ui/resize-observer';
 export * from './ui/screen-size-observer';
 export * from './ui/with-divider';
+export * from './ui/tooltip';
