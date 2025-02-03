@@ -38,10 +38,12 @@ export class Tooltip extends React.PureComponent<IProps> {
 
         if (isEnabled && willBeEnabled) {
             this.instance.setContent(this.props.content);
-        } else if (isEnabled) { // enabled now, but needs to be disabled
+        } else if (isEnabled) {
+            // enabled now, but needs to be disabled
             this.instance.hide();
             this.instance.disable();
-        } else if (willBeEnabled) { // disabled now, but needs to be enabled
+        } else if (willBeEnabled) {
+            // disabled now, but needs to be enabled
             this.instance.setContent(this.props.content);
             this.instance.enable();
             this.instance.show();
