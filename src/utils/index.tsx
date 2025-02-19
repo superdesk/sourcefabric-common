@@ -14,3 +14,7 @@ export function mapObject<T extends {[key: string]: any}, V>(
 
     return result as {[Property in keyof T]: V};
 }
+
+export function notNullOrUndefined<T>(x: null | undefined | T): x is T {
+    return x != null;
+}
