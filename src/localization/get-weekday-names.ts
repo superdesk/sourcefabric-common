@@ -11,32 +11,32 @@ export function getWeekdayNames(
     const all = [
         {
             index: 0,
+            label: new Intl.DateTimeFormat(localeName, {weekday: length}).format(new Date('1970-01-11')),
+        }, // Sun
+        {
+            index: 1,
             label: new Intl.DateTimeFormat(localeName, {weekday: length}).format(new Date('1970-01-05')),
         }, // Mon
         {
-            index: 1,
+            index: 2,
             label: new Intl.DateTimeFormat(localeName, {weekday: length}).format(new Date('1970-01-06')),
         }, // Tue
         {
-            index: 2,
+            index: 3,
             label: new Intl.DateTimeFormat(localeName, {weekday: length}).format(new Date('1970-01-07')),
         }, // Wed
         {
-            index: 3,
+            index: 4,
             label: new Intl.DateTimeFormat(localeName, {weekday: length}).format(new Date('1970-01-08')),
         }, // Thu
         {
-            index: 4,
+            index: 5,
             label: new Intl.DateTimeFormat(localeName, {weekday: length}).format(new Date('1970-01-09')),
         }, // Fri
         {
-            index: 5,
+            index: 6,
             label: new Intl.DateTimeFormat(localeName, {weekday: length}).format(new Date('1970-01-10')),
         }, // Sat
-        {
-            index: 6,
-            label: new Intl.DateTimeFormat(localeName, {weekday: length}).format(new Date('1970-01-11')),
-        }, // Sun
     ];
 
     return arraySpinBackwards(all, all.length - firstDayOfWeek);
