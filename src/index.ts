@@ -1,5 +1,6 @@
 export * from './time/add-seconds';
 export * from './time/get-time-string-iso';
+export * from './dates/build-calendar-for-month';
 export * from './data-structures/array-move';
 export * from './data-structures/array-insert-at-index';
 export * from './ui/show-modal';
@@ -20,3 +21,4 @@ export * from './ui/resize-observer';
 export * from './ui/screen-size-observer';
 export * from './ui/with-divider';
 export * from './ui/tooltip';
+export * from './ui/month-calendar';
