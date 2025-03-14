@@ -8,5 +8,15 @@ describe('localization.get-weekday-names', () => {
             getWeekdayNames('short', 0, 'en').map(({label}) => label),
             ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
         );
+
+        assert.deepEqual(
+            getWeekdayNames('short', 1, 'en').map(({label}) => label),
+            ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        );
+
+        assert.deepEqual(
+            getWeekdayNames('short', 2, 'en').map(({label}) => label),
+            ['Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon'],
+        );
     });
 });
