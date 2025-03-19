@@ -4,6 +4,7 @@ import {buildCalendarForMonth, IMonthCalendarDay} from '../dates/build-calendar-
 interface IProps {
     firstDayOfWeek: number;
     locale: string;
+    month: Date;
     dayTemplate: React.ComponentType<{day: IMonthCalendarDay}>;
     monthNameTemplate?: React.ComponentType<{monthName: string}>;
     weekdaysTemplate?: React.ComponentType<{weekdays: Array<string>}>;
@@ -24,7 +25,7 @@ const defaultWeekdaysTemplate: Required<IProps>['weekdaysTemplate'] = (props) =>
 export class MonthCalendar extends React.PureComponent<IProps> {
     render() {
         const {firstDayOfWeek, locale} = this.props;
-        const month = buildCalendarForMonth(new Date(), {weekStartsOn: firstDayOfWeek, code: locale});
+        const month = buildCalendarForMonth(this.props.month, {weekStartsOn: firstDayOfWeek, code: locale});
         const DayTemplate = this.props.dayTemplate;
         const MonthNameTemplate = this.props.monthNameTemplate ?? defaultMonthNameTemplate;
         const WeekdaysTemplate = this.props.weekdaysTemplate ?? defaultWeekdaysTemplate;
