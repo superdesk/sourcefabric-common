@@ -32,7 +32,7 @@ export function buildCalendarForMonth(month: Date, locale: {code: string; weekSt
 
     return {
         weeks,
-        monthName: getMonthNames(locale.code, 'long')[getMonth(new Date())],
+        monthName: getMonthNames(locale.code, 'long')[getMonth(month)],
         weekdays: getWeekdayNames('short', weekStartsOn, locale.code).map(({label}) => label),
     };
 }
