@@ -22,3 +22,4 @@ export * from './ui/screen-size-observer';
 export * from './ui/with-divider';
 export * from './ui/tooltip';
 export * from './ui/month-calendar';
+export * from './ui/divider';
