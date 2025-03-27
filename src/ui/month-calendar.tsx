@@ -6,18 +6,21 @@ interface IProps {
     locale: string;
     month: Date;
     dayTemplate: React.ComponentType<{day: IMonthCalendarDay}>;
-    monthNameTemplate?: React.ComponentType<{monthName: string}>;
+    monthNameTemplate?: React.ComponentType<{monthName: string; year: number}>;
     weekdaysTemplate?: React.ComponentType<{weekdays: Array<string>}>;
 }
 
 const defaultMonthNameTemplate: Required<IProps>['monthNameTemplate'] = (props) => (
-    <h3 style={{textAlign: 'center'}}>{props.monthName}</h3>
+    <div>
+        <h3 style={{textAlign: 'center', margin: 0, fontSize: '1.4rem', lineHeight: '1em'}}>{props.monthName}</h3>
+        <div style={{textAlign: 'center'}}>{props.year}</div>
+    </div>
 );
 
 const defaultWeekdaysTemplate: Required<IProps>['weekdaysTemplate'] = (props) => (
     <>
         {props.weekdays.map((day) => (
-            <div key={day}>{day}</div>
+            <strong key={day}>{day}</strong>
         ))}
     </>
 );
@@ -31,8 +34,14 @@ export class MonthCalendar extends React.PureComponent<IProps> {
         const WeekdaysTemplate = this.props.weekdaysTemplate ?? defaultWeekdaysTemplate;
 
         return (
-            <div style={{textTransform: 'capitalize'}}>
-                <MonthNameTemplate monthName={month.monthName} />
+            <div
+                style={{
+                    textTransform: 'capitalize',
+                    display: 'inline-flex',
+                    flexDirection: 'column',
+                }}
+            >
+                <MonthNameTemplate monthName={month.monthName} year={this.props.month.getFullYear()} />
 
                 <div
                     style={{
