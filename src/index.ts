@@ -9,6 +9,7 @@ export * from './utils/index';
 export * from './utils/array-spin';
 export * from './utils/get-human-readable-file-size';
 export * from './utils/classnames';
+export * from './utils/merge-sets';
 export * from './input/with-validation';
 export * from './localization/get-weekday-names';
 export * from './localization/get-month-names';
