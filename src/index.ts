@@ -12,6 +12,7 @@ export * from './utils/classnames';
 export * from './input/with-validation';
 export * from './localization/get-weekday-names';
 export * from './localization/get-month-names';
+export * from './localization/format-time';
 export * from './downloads/download-blob';
 export * from './downloads/download-file-attachment';
 export * from './events/generic-events';
