@@ -9,8 +9,8 @@ export function getWeekdayNames(
     localeName: string,
 ): Array<{index: number; nameShort: string; nameLong: string}> {
     const sunday = 4; // 1970-01-04
-    const all = range(sunday, sunday + 7).map((weekdayIndex) => {
-        const day = padStart(weekdayIndex.toString(), 2, '0');
+    const all = range(sunday, sunday + 7).map((monthDay, weekdayIndex) => {
+        const day = padStart(monthDay.toString(), 2, '0');
         const date = new Date(`1970-01-${day}`);
 
         return {

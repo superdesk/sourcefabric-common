@@ -5,8 +5,16 @@ import {getWeekdayNames} from './get-weekday-names';
 describe('localization.get-weekday-names', () => {
     it('respects the index', () => {
         assert.deepEqual(
-            getWeekdayNames(0, 'en').map(({nameShort}) => nameShort),
-            ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            getWeekdayNames(0, 'en').map(({nameShort, index}) => ({nameShort, index})),
+            [
+                {nameShort: 'Sun', index: 0},
+                {nameShort: 'Mon', index: 1},
+                {nameShort: 'Tue', index: 2},
+                {nameShort: 'Wed', index: 3},
+                {nameShort: 'Thu', index: 4},
+                {nameShort: 'Fri', index: 5},
+                {nameShort: 'Sat', index: 6},
+            ],
         );
 
         assert.deepEqual(
