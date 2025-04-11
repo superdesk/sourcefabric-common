@@ -1,3 +1,7 @@
+interface IOnlyStringKeys {
+    [key: string]: any;
+}
+
 /**
  * T - source object
  * V - value returned by mapping function
@@ -21,4 +25,24 @@ export function notNullOrUndefined<T>(x: null | undefined | T): x is T {
 
 export function nameof<T>(name: Extract<keyof T, string>): string {
     return name;
+}
+
+export function omit<T extends IOnlyStringKeys, K extends keyof T>(obj: T, ...keysToOmit: Array<K>): Omit<T, K> {
+    const keys = new Set<string>();
+
+    Object.keys(obj).forEach((key) => {
+        keys.add(key);
+    });
+
+    keysToOmit.forEach((key) => {
+        keys.delete(key as string);
+    });
+
+    var picked: any = {};
+
+    keys.forEach((key) => {
+        picked[key] = obj[key];
+    });
+
+    return picked;
 }
