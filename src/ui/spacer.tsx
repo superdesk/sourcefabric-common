@@ -17,6 +17,8 @@ export interface IPropsSpacer {
     style?: React.CSSProperties;
 
     children: Array<React.ReactNode>;
+
+    'data-test-id'?: string;
 }
 
 export class Spacer extends React.PureComponent<IPropsSpacer> {
@@ -37,6 +39,7 @@ export class Spacer extends React.PureComponent<IPropsSpacer> {
                     width: noGrow === true ? undefined : '100%',
                     ...(this.props.style ?? {}),
                 }}
+                data-test-id={this.props['data-test-id']}
             >
                 {this.props.children.map((el, i) =>
                     noWrap ? (

@@ -8,10 +8,12 @@ interface IProps {
     dayTemplate: React.ComponentType<{day: IMonthCalendarDay}>;
     monthNameTemplate?: React.ComponentType<{monthName: string; year: number}>;
     weekdaysTemplate?: React.ComponentType<{weekdays: Array<string>}>;
+    'data-test-id'?: string;
+    'data-test-value'?: string;
 }
 
 const defaultMonthNameTemplate: Required<IProps>['monthNameTemplate'] = (props) => (
-    <div>
+    <div data-test-id="heading">
         <h3 style={{textAlign: 'center', margin: 0, fontSize: '1.4rem', lineHeight: '1em'}}>{props.monthName}</h3>
         <div style={{textAlign: 'center'}}>{props.year}</div>
     </div>
@@ -40,6 +42,8 @@ export class MonthCalendar extends React.PureComponent<IProps> {
                     display: 'inline-flex',
                     flexDirection: 'column',
                 }}
+                data-test-id={this.props['data-test-id']}
+                data-test-value={this.props['data-test-value']}
             >
                 <MonthNameTemplate monthName={month.monthName} year={this.props.month.getFullYear()} />
 
