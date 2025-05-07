@@ -3,6 +3,7 @@ export * from './time/get-time-string-iso';
 export * from './dates/build-calendar-for-month';
 export * from './data-structures/array-move';
 export * from './data-structures/array-insert-at-index';
+export * from './data-structures/sort-by-multiple-criteria';
 export * from './ui/show-modal';
 export * from './ui/with-sortable';
 export * from './utils/index';
