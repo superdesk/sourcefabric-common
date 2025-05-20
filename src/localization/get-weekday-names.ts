@@ -6,8 +6,8 @@ import {arraySpinBackwards} from '../utils/array-spin';
  */
 export function getWeekdayNames(
     firstDayOfWeek: number,
-    localeName: string,
-): Array<{index: number; nameShort: string; nameLong: string}> {
+    localeCode: string,
+): Array<{index: number; nameShort: string; nameLong: string; nameNarrow: string}> {
     const sunday = 4; // 1970-01-04
     const all = range(sunday, sunday + 7).map((monthDay, weekdayIndex) => {
         const day = padStart(monthDay.toString(), 2, '0');
@@ -15,8 +15,18 @@ export function getWeekdayNames(
 
         return {
             index: weekdayIndex,
-            nameShort: new Intl.DateTimeFormat(localeName, {weekday: 'short'}).format(date),
-            nameLong: new Intl.DateTimeFormat(localeName, {weekday: 'long'}).format(date),
+
+            get nameShort() {
+                return new Intl.DateTimeFormat(localeCode, {weekday: 'short'}).format(date);
+            },
+
+            get nameLong() {
+                return new Intl.DateTimeFormat(localeCode, {weekday: 'long'}).format(date);
+            },
+
+            get nameNarrow() {
+                return new Intl.DateTimeFormat(localeCode, {weekday: 'narrow'}).format(date);
+            },
         };
     });
 
