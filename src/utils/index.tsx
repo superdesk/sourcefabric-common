@@ -2,6 +2,10 @@ interface IOnlyStringKeys {
     [key: string]: any;
 }
 
+export type PickKey<T, K extends keyof T> = K;
+
+export type OmitStrict<T, K extends keyof T> = Omit<T, K>;
+
 /**
  * T - source object
  * V - value returned by mapping function
