@@ -40,9 +40,7 @@ export const Main: Story = {
                 )}
                 options={{
                     onSortEnd: ({oldIndex, newIndex}) => {
-                        const newItems = arrayMove(items, oldIndex, newIndex);
-
-                        setItems([...newItems]);
+                        setItems(arrayMove(items, oldIndex, newIndex));
                     },
                 }}
             />
