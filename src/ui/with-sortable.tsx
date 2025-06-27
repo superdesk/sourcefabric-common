@@ -1,29 +1,33 @@
 import * as React from 'react';
 import {SortableContainer, SortableContainerProps, SortableElement} from 'react-sortable-hoc';
 
-interface IProps<T> {
-    items: Array<T>;
-    itemTemplate: React.ComponentType<{item: T}>;
+interface IProps<T> extends ISortableListProps<T> {
     getId(item: T): string;
     options?: SortableContainerProps;
 }
 
 interface ISortableListProps<T> {
     items: Array<T>;
-    itemTemplate: IProps<T>['itemTemplate'];
+    itemTemplate: React.ComponentType<{item: T}>;
 }
 
 interface ISortableItemProps<T> {
     item: T;
-    itemTemplate: IProps<T>['itemTemplate'];
+    itemTemplate: ISortableListProps<T>['itemTemplate'];
 }
 
 export class WithSortable<T> extends React.PureComponent<IProps<T>> {
-    render() {
-        const SortableList = SortableContainer((props: ISortableListProps<T>) => {
-            const SortableItem = SortableElement((props: ISortableItemProps<T>) => (
-                <props.itemTemplate item={props.item} />
-            ));
+    SortableList: React.ComponentClass<ISortableListProps<T> & SortableContainerProps>;
+
+    constructor(props: IProps<T>) {
+        super(props);
+
+        this.SortableList = SortableContainer((props: ISortableListProps<T>) => {
+            const SortableItem = SortableElement((props: ISortableItemProps<T>) => {
+                const ItemTemplate = props.itemTemplate;
+
+                return <ItemTemplate item={props.item} />;
+            });
 
             return (
                 <div>
@@ -38,6 +42,10 @@ export class WithSortable<T> extends React.PureComponent<IProps<T>> {
                 </div>
             );
         });
+    }
+
+    render() {
+        const {SortableList} = this;
 
         return <SortableList itemTemplate={this.props.itemTemplate} items={this.props.items} {...this.props.options} />;
     }
