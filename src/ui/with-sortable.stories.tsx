@@ -8,7 +8,7 @@ const meta: Meta<typeof WithSortable> = {
     component: WithSortable,
     decorators: [
         (Story) => (
-            <div style={{width: 300}}>
+            <div style={{width: 500}}>
                 <Story />
             </div>
         ),
@@ -32,11 +32,17 @@ export const Main: Story = {
         return (
             <WithSortable
                 items={items}
-                itemTemplate={({item}) => <div style={{margin: 4, border: '1px solid red'}}>{item.name}</div>}
                 getId={(item) => item.name}
+                itemTemplate={({item}) => (
+                    <div style={{height: 40}}>
+                        {items.findIndex((x) => x.name === item.name) % 2 === 0 ? `item ${item.name} zzz` : item.name}
+                    </div>
+                )}
                 options={{
                     onSortEnd: ({oldIndex, newIndex}) => {
-                        setItems(arrayMove(items, oldIndex, newIndex));
+                        const newItems = arrayMove(items, oldIndex, newIndex);
+
+                        setItems([...newItems]);
                     },
                 }}
             />

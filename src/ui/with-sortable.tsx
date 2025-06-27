@@ -1,15 +1,5 @@
-/* eslint-disable react/no-multi-comp */
 import * as React from 'react';
 import {SortableContainer, SortableContainerProps, SortableElement} from 'react-sortable-hoc';
-
-interface IPropsSortableItem<T> {
-    item: T;
-    itemTemplate: React.ComponentType<{item: T}>;
-}
-
-interface IPropsSortableContainer<T> {
-    items: Array<T>;
-}
 
 interface IProps<T> {
     items: Array<T>;
@@ -18,47 +8,32 @@ interface IProps<T> {
     options?: SortableContainerProps;
 }
 
+interface ISortableListProps<T> {
+    items: Array<T>;
+    itemTemplate: IProps<T>['itemTemplate'];
+}
+
+interface ISortableItemProps<T> {
+    item: T;
+    itemTemplate: IProps<T>['itemTemplate'];
+}
+
 export class WithSortable<T> extends React.PureComponent<IProps<T>> {
-    private SortableList: React.ComponentType<IPropsSortableContainer<T> & SortableContainerProps>;
-
-    constructor(props: IProps<T>) {
-        super(props);
-
-        const SortableItem = SortableElement(
-            class SortableItemComponent extends React.PureComponent<IPropsSortableItem<T>> {
-                render() {
-                    const Template = this.props.itemTemplate;
-
-                    return <Template item={this.props.item} />;
-                }
-            },
-        );
-
-        this.SortableList = SortableContainer(
-            class SortableListComponent extends React.PureComponent<IPropsSortableContainer<T>> {
-                render() {
-                    const {items} = this.props;
-
-                    return (
-                        <div>
-                            {items.map((item, i) => (
-                                <SortableItem
-                                    key={props.getId(item)}
-                                    index={i}
-                                    item={item}
-                                    itemTemplate={props.itemTemplate}
-                                />
-                            ))}
-                        </div>
-                    );
-                }
-            },
-        );
-    }
-
     render() {
-        const {SortableList} = this;
+        const SortableList = SortableContainer((props: ISortableListProps<T>) => {
+            const SortableItem = SortableElement((props: ISortableItemProps<T>) =>
+                <props.itemTemplate item={props.item} />
+            );
 
-        return <SortableList items={this.props.items} {...this.props.options} />;
+            return (
+                <div>
+                    {props.items.map((item, i) => (
+                        <SortableItem key={this.props.getId(item)} index={i} item={item} itemTemplate={props.itemTemplate} />
+                    ))}
+                </div>
+            )
+        });
+
+        return <SortableList itemTemplate={this.props.itemTemplate} items={this.props.items} {...this.props.options} />;
     }
 }
