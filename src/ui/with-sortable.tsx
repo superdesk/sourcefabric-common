@@ -21,17 +21,22 @@ interface ISortableItemProps<T> {
 export class WithSortable<T> extends React.PureComponent<IProps<T>> {
     render() {
         const SortableList = SortableContainer((props: ISortableListProps<T>) => {
-            const SortableItem = SortableElement((props: ISortableItemProps<T>) =>
+            const SortableItem = SortableElement((props: ISortableItemProps<T>) => (
                 <props.itemTemplate item={props.item} />
-            );
+            ));
 
             return (
                 <div>
                     {props.items.map((item, i) => (
-                        <SortableItem key={this.props.getId(item)} index={i} item={item} itemTemplate={props.itemTemplate} />
+                        <SortableItem
+                            key={this.props.getId(item)}
+                            index={i}
+                            item={item}
+                            itemTemplate={props.itemTemplate}
+                        />
                     ))}
                 </div>
-            )
+            );
         });
 
         return <SortableList itemTemplate={this.props.itemTemplate} items={this.props.items} {...this.props.options} />;
