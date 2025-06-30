@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type {Meta, StoryObj} from '@storybook/react';
 import {WithSortable} from './with-sortable';
-import {arrayMove} from '../data-structures/array-move';
+import {arrayMove} from '../../data-structures/array-move';
 
 const meta: Meta<typeof WithSortable> = {
     title: 'HOC/WithSortable',

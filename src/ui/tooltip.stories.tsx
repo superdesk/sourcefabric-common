@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type {Meta, StoryObj} from '@storybook/react';
-import {WithSortable} from './with-sortable';
+import {WithSortable} from './with-sortable/with-sortable';
 import {Tooltip} from './tooltip';
 import {Placement} from 'tippy.js';
 
