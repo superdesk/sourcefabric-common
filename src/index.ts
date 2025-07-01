@@ -5,7 +5,7 @@ export * from './data-structures/array-move';
 export * from './data-structures/array-insert-at-index';
 export * from './data-structures/sort-by-multiple-criteria';
 export * from './ui/show-modal';
-export * from './ui/with-sortable';
+export * from './ui/with-sortable/with-sortable';
 export * from './utils/index';
 export * from './utils/array-spin';
 export * from './utils/get-human-readable-file-size';
