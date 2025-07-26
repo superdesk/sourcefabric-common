@@ -16,7 +16,10 @@ export interface IPropsSpacer {
 
     style?: React.CSSProperties;
 
-    children: Array<React.ReactNode>;
+    /** allowing a single node to support fragments */
+    children: Array<React.ReactNode> | React.ReactNode;
+
+    customRef?: React.LegacyRef<HTMLDivElement>;
 
     'data-test-id'?: string;
 }
@@ -40,6 +43,7 @@ export class Spacer extends React.PureComponent<IPropsSpacer> {
                     ...(this.props.style ?? {}),
                 }}
                 data-test-id={this.props['data-test-id']}
+                ref={this.props.customRef}
             >
                 {this.props.children.map((el, i) =>
                     noWrap ? (
