@@ -30,6 +30,7 @@ export class Spacer extends React.PureComponent<IPropsSpacer> {
 
         const justifyContentDefault: IPropsSpacer['justifyContent'] = h ? 'space-between' : 'start';
         const alignItemsDefault: IPropsSpacer['alignItems'] = h ? 'center' : 'start';
+        const children = Array.isArray(this.props.children) ? this.props.children : [this.props.children];
 
         return (
             <div
@@ -45,7 +46,7 @@ export class Spacer extends React.PureComponent<IPropsSpacer> {
                 data-test-id={this.props['data-test-id']}
                 ref={this.props.customRef}
             >
-                {this.props.children.map((el, i) =>
+                {children.map((el, i) =>
                     noWrap ? (
                         el
                     ) : (
