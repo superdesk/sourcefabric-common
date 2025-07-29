@@ -17,7 +17,7 @@ export type OmitStrict<T, K extends keyof T> = Omit<T, K>;
  * - `a.b.c`
  */
 export type Paths<T> = T extends object
-    ? {[K in keyof T]: `${Exclude<K, symbol>}${"" | `.${Paths<T[K]>}`}`}[keyof T]
+    ? {[K in keyof T]: `${Exclude<K, symbol>}${'' | `.${Paths<T[K]>}`}`}[keyof T]
     : never;
 
 /**
