@@ -7,6 +7,20 @@ export type PickKey<T, K extends keyof T> = K;
 export type OmitStrict<T, K extends keyof T> = Omit<T, K>;
 
 /**
+ * Returns all possible property paths of an object as specific strings.
+ *
+ * E.g. typeof T is `{ a: { b: { c: string } } }`
+ *
+ * All available paths would be:
+ * - `a`
+ * - `a.b`
+ * - `a.b.c`
+ */
+export type Paths<T> = T extends object
+    ? {[K in keyof T]: `${Exclude<K, symbol>}${"" | `.${Paths<T[K]>}`}`}[keyof T]
+    : never;
+
+/**
  * T - source object
  * V - value returned by mapping function
  */
